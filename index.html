@@ -5,17 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante Gorjeta</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <header>
+    <main class="caixaMaster">
         <h1>Calculadora de Gorjetas</h1>
-    </header>
-    <main>
-        <h5>Valor da conta:</h5>
-        <p id="valorConta"></p>
-        <h5>Qualidade do serviço:</h5>
-        <p id="qualidadeServico"></p>
+        <form action="#">
+            <label for="valorConta">Valor da conta:</label>
+            <input type="number" name="valorConta" id="valorConta"></input>
+            <label for="qualidadeServico">Qualidade do serviço:</label>
+            <select id="valorQualidade" name="valorQualidade">
+                <option value="excelente">Excelente</option>
+                <option value="otimo">Ótimo</option>
+                <option value="bom">Bom</option>
+                <option value="ruim">Ruim</option>
+            </select>
+            <input type="submit" value="Calcular" onclick="enviarForm()"></input>
+        </form>
+
         <h2>Cálculo da Gorjeta</h2>
         <h5>Valor da Gorjeta:</h5>
         <p id="valorGorjeta"></p>

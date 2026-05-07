@@ -1,46 +1,53 @@
-valorConta = document.getElementById("valorConta");
-qualidadeServico = document.getElementById("qualidadeServico");
-valorGorjeta = document.getElementById("valorGorjeta");
-valorTotal = document.getElementById("valorTotal");
+contaInner = document.getElementById("valorConta").innerHTML;
+qualidadeInner = document.getElementById("valorQualidade").innerHTML;
+gorjetaInner = document.getElementById("valorGorjeta").innerHTML;
+totalInner = document.getElementById("valorTotal").innerHTML;
+valorConta = document.getElementById("valorConta").value;
+valorQualidade = document.getElementById("valorQualidade").value;
+valorGorjeta = document.getElementById("valorGorjeta").value;
+valorTotal = document.getElementById("valorTotal").value;
 
 function pegarPorcentagem(qualidade) {
   switch (qualidade) {
-    case "Excelente":
+    case "excelente":
       return 0.1;
       break;
-    case "Ótimo":
+    case "otimo":
       return 0.08;
       break;
-    case "Bom":
+    case "bom":
       return 0.05;
       break;
-    case "Ruim":
+    case "ruim":
       return 0.02;
       break;
   }
 }
 
-function calcularGorjeta(valorConta, qualidade) {
-  return valorConta * pegarPorcentagem(qualidade);
+function calcularGorjeta(conta, qualidade) {
+  console.log(conta, pegarPorcentagem())
+  return conta * pegarPorcentagem(qualidade);
 }
 
-function calcularTotal(valorConta, qualidade) {
-  return conta + calcularGorjeta(valorConta, qualidade);
+function calcularTotal(conta, qualidade) {
+  console.log(conta + calcularGorjeta(conta, qualidade))
+  return conta + calcularGorjeta(conta, qualidade);
 }
 
 function mostrarValores(conta, qualidade) {
-  valorConta.innerHTML = conta.toFixed(2);
-  qualidadeServico.innerHTML = qualidade;
-  valorGorjeta.innerHTML = calcularGorjeta(conta, qualidade).toFixed(2);
-  valorTotal.innerHTML = calcularTotal(conta, qualidade).toFixed(2);
+  contaInner = conta;
+  qualidadeInner = qualidade;
+  gorjetaInner = calcularGorjeta(conta, qualidade);
+  totalInner = calcularTotal(conta, qualidade);
 }
 
 function logarValores(conta, qualidade) {
-  console.log(`Valor da conta: R$ ${conta.toFixed(2)}\nQualidade do Serviço: ${qualidade}\nValor da Gorjeta: R$ ${calcularGorjeta(conta, qualidade).toFixed(2)}\nValor Total: ${calcularGorjeta(conta, qualidade).toFixed(2)}`);
+  console.log(`Valor da conta: R$ ${conta}\nQualidade do Serviço: ${qualidade}\nValor da Gorjeta: R$ ${calcularGorjeta(conta, qualidade)}\nValor Total: ${calcularGorjeta(conta, qualidade)}`);
 }
 
-conta = 235.6;
-qualidade = "Ótimo";
-
-mostrarValores(conta, qualidade);
-logarValores(conta, qualidade);
+function enviarForm() {
+  conta = valorConta;
+  qualidade = valorQualidade;
+  mostrarValores(conta, qualidade);
+  logarValores(conta, qualidade);
+}
